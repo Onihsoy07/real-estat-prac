@@ -1,16 +1,12 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <div>
-    <h4>{{rooms[0]}} 원룸</h4>
-    <p>{{price[0]}} 만원</p>
+
+  <div class="menu">
+    <a v-for="(menuName, i) in mainMenus" :key="i">no.{{i}} {{menuName}}</a>
   </div>
-  <div>
-    <h4>{{rooms[1]}} 원룸</h4>
-    <p>{{price[1]}} 만원</p>
-  </div>
-  <div>
-    <h4>{{rooms[2]}} 원룸</h4>
-    <p>{{price[2]}} 만원</p>
+
+  <div v-for="(product, i) in products" :key="i">
+    <h4>{{product.roomName}} 원룸</h4>
+    <p>{{product.price}} 만원</p>
   </div>
 
 </template>
@@ -21,8 +17,12 @@ export default {
   name: 'App',
   data() {
     return {
-      price : [65, 60, 75],
-      rooms : ['전대리원룸', "둔전원룸", "유방동원룸"],
+      mainMenus: ['Home', 'Shop', 'About'],
+      products: [
+        {roomName: '전대리원룸', price: 65},
+        {roomName: '둔전원룸', price: 60},
+        {roomName: '유방동원룸', price: 75}
+      ]
       
     }
   },
@@ -38,6 +38,19 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 5px;
+}
+
+.menu {
+  background: darkslateblue;
+  padding: 10px;
+  border-radius: 5px;
+}
+.menu a {
+  height: 40px;
+  line-height: 40px;
+  font-size: 25px;
+  color: white;
+  padding: 25px;
 }
 </style>
