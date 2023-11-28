@@ -5,6 +5,7 @@
   </div>
 
   <div v-for="(product, i) in products" :key="i">
+    <img :src="require(`${product.imageSrc}`)" class="room-img">
     <h4>{{product.roomName}} 원룸</h4>
     <p>{{product.price}} 만원</p>
     <button @click="declaration(i)">허위매물신고</button> <span>신고수 : {{ product.declarations }}</span>
@@ -20,9 +21,9 @@ export default {
     return {
       mainMenus: ['Home', 'Shop', 'About'],
       products: [
-        {roomName: '전대리원룸', price: 65, declarations: 0},
-        {roomName: '둔전원룸', price: 60, declarations: 0},
-        {roomName: '유방동원룸', price: 75, declarations: 0}
+        {roomName: '전대리원룸', price: 65, declarations: 0, imageSrc: './assets/room0.jpg'},
+        {roomName: '둔전원룸', price: 60, declarations: 0, imageSrc: './assets/room1.jpg'},
+        {roomName: '유방동원룸', price: 75, declarations: 0, imageSrc: './assets/room2.jpg'}
       ],
     }
   },
@@ -58,5 +59,10 @@ export default {
   font-size: 25px;
   color: white;
   padding: 25px;
+}
+.room-img {
+  width: 70%;
+  height: auto;
+  margin-top: 40px;
 }
 </style>
