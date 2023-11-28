@@ -1,7 +1,8 @@
 <template>
 
-  <div class="black-bg" v-if="isModalOpen" @click="modalClose()">
+  <div class="black-bg" v-if="isModalOpen">
     <div class="white-bg">
+      <div class="modal-close-btn" @click="modalClose()">X</div>
       <h4>{{ modalTitle }}</h4>
       <h4>{{ modalDetail }}</h4>
     </div>
@@ -109,5 +110,9 @@ div {
   background: white;
   border-radius: 8px;
   padding: 20px;
+}
+.modal-close-btn {
+  float: right;
+  cursor: pointer;
 }
 </style>
