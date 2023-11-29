@@ -12,21 +12,24 @@
     <a v-for="(menuName, i) in mainMenus" :key="i">no.{{i}} {{menuName}}</a>
   </div>
 
-  <div v-for="(product, i) in products" :key="i">
-    <img :src="require(`${product.imageSrc}`)" class="room-img">
-    <h4 @click="modalOpen(i)">{{product.roomName}} 원룸</h4>
-    <p>{{product.price}} 만원</p>
-    <button @click="declaration(i)">허위매물신고</button> <span>신고수 : {{ product.declarations }}</span>
+  <div v-for="(data, i) in oneRoomDatas" :key="i">
+    <img :src="data.image" class="room-img">
+    <h4 @click="modalOpen(i)">{{data.title}}</h4>
+    <p>{{data.price}}</p>
+    <!-- <button @click="declaration(i)">허위매물신고</button> <span>신고수 : 0</span> -->
   </div>
 
 </template>
 
 <script>
 
+import oneRoomData from './data/oneRoomData.js';
+
 export default {
   name: 'App',
   data() {
     return {
+      oneRoomDatas: oneRoomData,
       isModalOpen: false,
       modalTitle: '',
       modalDetail: '',
@@ -50,8 +53,8 @@ export default {
       // return
     },
     modalOpen: function(id) {
-      this.modalTitle = this.products[id].roomName;
-      this.modalDetail = this.products[id].detail;
+      this.modalTitle = this.oneRoomDatas[id].title;
+      this.modalDetail = this.oneRoomDatas[id].content;
       this.isModalOpen = true;
     },
     modalClose: function() {
